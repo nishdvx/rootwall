@@ -1,4 +1,24 @@
 @echo off
+echo Do you want to create the folder structure? (Y/N):
+
+:askPermission
+set /p userChoice=Enter your choice: 
+
+if /I "%userChoice%"=="Y" (
+    echo You have accepted the terms and conditions.
+    echo Proceeding with folder structure creation...
+    goto createFolders
+) else if /I "%userChoice%"=="N" (
+    echo You have canceled the operation. No directories will be created.
+    pause
+    exit
+) else (
+    echo Invalid input! Please enter Y for Yes or N for No.
+    goto askPermission
+)
+:createFolders
+:: Start creating directories below
+echo Creating directories...
 
 mkdir "Apps\Driver"
 mkdir "Apps\Games\EpicGa\Files"
